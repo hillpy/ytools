@@ -1,0 +1,57 @@
+{
+  "name": "ytools",
+  "version": "0.0.0",
+  "description": "A javascript tool library. 一个javascript工具库。",
+  "main": "dist/ytools.cjs.js",
+  "module": "dist/ytools.esm.js",
+  "browser": "dist/ytools.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run watch",
+    "watch": "rollup -c build/rollup.config.js -w",
+    "build": "rollup -c build/rollup.config.js",
+    "lint:init": "eslint --init",
+    "lint": "eslint --fix --ext .js src",
+    "commit": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
+  },
+  "keywords": ["ytools"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shinn-lancelot/ytools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shinn-lancelot/ytools/issues"
+  },
+  "readme": "README.md",
+  "author": "shinn_lancelot",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "^3.0.7",
+    "conventional-changelog": "^3.0.6",
+    "conventional-changelog-cli": "^2.0.12",
+    "cssnano": "^4.1.10",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.15.3",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "node-sass": "^4.11.0",
+    "rollup": "^1.7.3",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-flow-no-whitespace": "^1.0.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^4.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
