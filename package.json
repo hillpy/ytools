@@ -6,7 +6,7 @@
   "module": "dist/ytools.esm.js",
   "browser": "dist/ytools.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "npm run watch",
     "watch": "rollup -c build/rollup.config.js -w",
     "build": "rollup -c build/rollup.config.js",
@@ -15,7 +15,9 @@
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   },
-  "keywords": ["ytools"],
+  "keywords": [
+    "ytools"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/shinn-lancelot/ytools.git"
@@ -27,6 +29,11 @@
   "author": "shinn_lancelot",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.8.0",
+    "babel-preset-env": "^1.7.0",
     "commitizen": "^3.0.7",
     "conventional-changelog": "^3.0.6",
     "conventional-changelog-cli": "^2.0.12",
@@ -38,7 +45,9 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.8.0",
     "node-sass": "^4.11.0",
+    "regenerator-runtime": "^0.13.2",
     "rollup": "^1.7.3",
     "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^9.2.2",
