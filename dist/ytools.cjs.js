@@ -212,6 +212,8 @@ defaultExport$5.getRandomString = function getRandomString (length, type) {
     chars = '1234567890';
   } else if (type === 3) {
     chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  } else {
+    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
   }
 
   for (var i = 0; i < length; i++) {
