@@ -1,6 +1,6 @@
 {
   "name": "ytools",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha",
   "description": "A javascript tool library. 一个javascript工具库。",
   "main": "dist/ytools.cjs.js",
   "module": "dist/ytools.esm.js",

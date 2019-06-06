@@ -5,8 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .result-box {
+            width: 100vw;
+            height: 100vh;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .result-box div {
+            margin: 5px auto;
+        }
+    </style>
 </head>
 <body>
+    <div class="result-box">
+    </div>
     <script src="../dist/ytools.js"></script>
+    <script>
+        var boxObj = document.getElementsByClassName('result-box')[0],
+            el = '',
+            domArr = [];
+
+        // is.js
+        domArr.push('是否支持触摸：' + ytools.isSupportTouch());
+        domArr.push('是否支持本地存储：' + ytools.isSupportLocalStorage());
+        domArr.push('是否支持cookie：' + ytools.isSupportCookie());
+        domArr.push('18888888888是否为手机号：' + ytools.isMobilePhone(18888888888));
+        domArr.push('6.6是否为Number类型：' + ytools.isNumber(6.6));
+        domArr.push('44是否为整数：' + ytools.isInteger(44));
+        domArr.push('-------------------------');
+
+        // number.js
+        domArr.push('随机获取1-10之间的整数：' + ytools.getRandomInteger(1, 10));
+        domArr.push('-------------------------');
+
+        // object.js
+        domArr.push('扩展对象：' + JSON.stringify(ytools.extendObj({ a: 1, b: 2 }, { a: 11 })));
+        domArr.push('深度拷贝：' + JSON.stringify(ytools.deepCopy({ name: 'shinn_lancelot' })));
+        domArr.push('-------------------------');
+
+        // storage.js
+        domArr.push('设置存储（name:shinn_lancelot）：' + ytools.setStore('name', 'shinn_lancelot'));
+        domArr.push('获取存储（name）：' + ytools.getStore('name'));
+        domArr.push('删除存储（name）：' + ytools.delStore('name'));
+
+        // string.js
+        domArr.push('获取随机字符串：' + ytools.getRandomString());
+
+        // time.js
+        domArr.push('格式化时间戳：' + ytools.timestampFormat(new Date().getTime() / 1000));
+
+        for (var i = 0, len = domArr.length; i < len; i++) {
+            el = document.createElement('div');
+            el.innerHTML = domArr[i];
+            boxObj.appendChild(el);
+        }
+    </script>
 </body>
 </html>
