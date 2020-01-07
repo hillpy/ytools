@@ -55,12 +55,20 @@
         domArr.push('设置存储（name:shinn_lancelot）：' + ytools.setStore('name', 'shinn_lancelot'));
         domArr.push('获取存储（name）：' + ytools.getStore('name'));
         domArr.push('删除存储（name）：' + ytools.delStore('name'));
+        domArr.push('-------------------------');
 
         // string.js
         domArr.push('获取随机字符串：' + ytools.getRandomString());
+        domArr.push('-------------------------');
 
         // time.js
         domArr.push('格式化时间戳：' + ytools.timestampFormat(new Date().getTime() / 1000));
+        domArr.push('秒数格式化：' + ytools.secondFormat(1180, 0, ['天', false], ['时', false], ['分', false], ['秒', false]));
+        domArr.push('根据秒数和基数计算倍数余数（秒数：1180，基数：60）：' + JSON.stringify(ytools.calcu(1180, 60)));
+        domArr.push('-------------------------');
+
+        // url.js
+        domArr.push('获取url参数（code）：' + ytools.getParam('code'));
 
         for (var i = 0, len = domArr.length; i < len; i++) {
             el = document.createElement('div');

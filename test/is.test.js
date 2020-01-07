@@ -21,5 +21,5 @@ test('6.6 is number ', () => {
 })
 
 test('44 is integer ', () => {
-  expect(is.isInteger(44)).toBeTruthy();
+  expect(is.isInteger(44)).toBeTruthy()
 })

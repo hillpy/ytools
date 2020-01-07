@@ -9,5 +9,5 @@ test('getStore', () => {
 })
 
 test('delStore', () => {
-  expect(storage.delStore("name")).toBeTruthy();
+  expect(storage.delStore("name")).toBeTruthy()
 })

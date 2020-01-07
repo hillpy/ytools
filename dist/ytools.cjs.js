@@ -1,6 +1,6 @@
 /*
  * ytools v0.0.1-alpha
- * (c) 2019-2019 shinn_lancelot
+ * (c) 2019-2020 shinn_lancelot
  * Released under the MIT License.
  */
 'use strict';
@@ -223,6 +223,25 @@ defaultExport$5.getRandomString = function getRandomString (length, type) {
 };
 
 /**
+ * 替换字符串
+ *
+ * @param {*} str
+ * @param {*} dataObj
+ */
+defaultExport$5.replaceStr = function replaceStr (str, dataObj) {
+  if (!str || !dataObj) {
+    return false
+  }
+  if (!(dataObj instanceof Object)) {
+    return false
+  }
+  Object.keys(dataObj).forEach(function (key) {
+    str = str.replace(new RegExp('{' + key + '}', 'g'), dataObj[key]);
+  });
+  return str
+};
+
+/**
  * 时间类，时间相关函数
  */
 var defaultExport$6 = function defaultExport () {};
@@ -259,9 +278,126 @@ defaultExport$6.timestampFormat = function timestampFormat (timestamp, type, yea
 };
 
 /**
+ * 秒数格式化
+ *
+ * @param {*} second
+ * @param {*} type
+ * @param {*} daysStr
+ * @param {*} hoursStr
+ * @param {*} minutesStr
+ * @param {*} secondsStr
+ */
+defaultExport$6.secondFormat = function secondFormat (second, type, daysStr, hoursStr, minutesStr, secondsStr) {
+  type || (type = 0);
+  if (!daysStr || !(daysStr instanceof Array)) {
+    daysStr = ['days', false];
+  }
+  if (!hoursStr || !(hoursStr instanceof Array)) {
+    hoursStr = ['hours', false];
+  }
+  if (!minutesStr || !(minutesStr instanceof Array)) {
+    minutesStr = ['minutes', false];
+  }
+  if (!secondsStr || !(secondsStr instanceof Array)) {
+    secondsStr = ['seconds', false];
+  }
+
+  var res = '';
+  type === 1 && (res = { str: '', data: [] });
+  if (second === undefined) {
+    return res
+  }
+
+  var calcuRes = {};
+  var remainSecond = second;
+  var secondLevelArr = [
+    {
+      str: daysStr[0],
+      keep: daysStr[1],
+      base: 1 * 60 * 60 * 24
+    },
+    {
+      str: hoursStr[0],
+      keep: hoursStr[1],
+      base: 1 * 60 * 60
+    },
+    {
+      str: minutesStr[0],
+      keep: minutesStr[1],
+      base: 1 * 60
+    },
+    {
+      str: secondsStr[0],
+      keep: secondsStr[1],
+      base: 1
+    }
+  ];
+
+  for (var i = 0, len = secondLevelArr.length; i < len; i++) {
+    calcuRes = this.calcu(remainSecond, secondLevelArr[i].base);
+    if (calcuRes.data > 0 || secondLevelArr[i].keep || (type === 0 && res !== '') || (type === 1 && res.str !== '')) {
+      if (type === 0) {
+        res += (calcuRes.data + secondLevelArr[i].str);
+      } else if (type === 1) {
+        res.str += calcuRes.data + secondLevelArr[i].str;
+        var dataObj = {};
+        dataObj.value = calcuRes.data;
+        dataObj.str = secondLevelArr[i].str;
+        res.data.push(dataObj);
+      }
+    }
+    if (calcuRes.hasOwnProperty('remainSecond')) {
+      remainSecond = calcuRes.remainSecond;
+    }
+  }
+
+  return res
+};
+
+/**
+ * 根据秒数和基数计算倍数余数
+ *
+ * @param {*} second
+ * @param {*} base
+ */
+defaultExport$6.calcu = function calcu (second, base) {
+  var res = {
+    data: 0,
+    remainSecond: 0
+  };
+  if (second === '' || base === '') {
+    return res
+  }
+  res.data = Math.floor(second / base);
+  res.remainSecond = res.data > 0 ? second - res.data * base : second;
+  return res
+};
+
+/**
  * url类，url相关函数
  */
 var defaultExport$7 = function defaultExport () {};
+
+defaultExport$7.getParam = function getParam (paraName) {
+  var url = document.location.toString();
+  var arrObj = url.split('?');
+
+  if (arrObj.length > 1) {
+    var arrPara = arrObj[1].split('&');
+    var arr;
+
+    for (var i = 0; i < arrPara.length; i++) {
+      arr = arrPara[i].split('=');
+
+      if (arr != null && arr[0] === paraName) {
+        return arr[1]
+      }
+    }
+    return ''
+  } else {
+    return ''
+  }
+};
 
 var core = {};
 Object.assign(core, defaultExport, defaultExport$2, defaultExport$1, defaultExport$3, defaultExport$4, defaultExport$5, defaultExport$6, defaultExport$7);
