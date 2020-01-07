@@ -1,5 +1,5 @@
 /*
- * ytools v0.0.1-alpha
+ * ytools v0.0.2-beta
  * (c) 2019-2020 shinn_lancelot
  * Released under the MIT License.
  */
