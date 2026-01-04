@@ -1,6 +1,6 @@
 /*
  * ytools v0.0.2-beta
- * (c) 2019-2020 shinn_lancelot
+ * (c) 2019-2026 shinn_lancelot
  * Released under the MIT License.
  */
 'use strict';
@@ -74,6 +74,14 @@ defaultExport$1.isNumber = function isNumber (str) {
  */
 defaultExport$1.isInteger = function isInteger (str) {
   if (typeof str === 'number' && str % 1 === 0) {
+    return true
+  }
+  return false
+};
+
+defaultExport$1.isEmail = function isEmail (str) {
+  var emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (typeof str === 'string' && emailReg.test(str)) {
     return true
   }
   return false

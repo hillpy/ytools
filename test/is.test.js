@@ -23,3 +23,15 @@ test('6.6 is number ', () => {
 test('44 is integer ', () => {
   expect(is.isInteger(44)).toBeTruthy()
 })
+
+test('44 is integer ', () => {
+  expect(is.isInteger(44)).toBeTruthy()
+})
+
+test('123456@qq.com is email ', () => {
+  expect(is.isEmail('123456@qq.com')).toBeTruthy()
+})
+
+test('test@qq is email ', () => {
+  expect(is.isEmail('test@qq')).toBeFalsy()
+})

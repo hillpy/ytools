@@ -68,4 +68,12 @@ export default class {
     }
     return false
   }
+
+  static isEmail (str) {
+    let emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    if (typeof str === 'string' && emailReg.test(str)) {
+      return true
+    }
+    return false
+  }
 }
